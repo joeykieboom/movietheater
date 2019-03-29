@@ -1,0 +1,10 @@
+﻿@model MovieModel
+<div class="card" style="width:400px; margin:10px; float:left">
+    <img class="card-img-top" width="150" src="@Model.ImgSource" alt="Card image">
+    <div class="card-body">
+        <h4 class="card-title">@Model.Title</h4>
+        <p class="card-text">@Model.ReleaseDate</p>
+        <p class="card-text" style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap">@Model.Information</p>
+        <a href="@Url.Action("Create", "OrderModels", new {movieID = Model.TMDBID})" class="btn btn-primary">See Movie</a>
+    </div>
+</div>

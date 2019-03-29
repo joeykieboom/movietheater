@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewData["Title"] = "QuickAccessChoice";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" style="margin-left:450px; margin-top:250px;" >
+    <div class="col-md-4">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" width="250" src="~/img/ticket.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Tickets ophalen</h5>
+                <p class="card-text">Haal hier uw tickets op</p>
+                <a asp-action="Details" asp-controller="OrderModels" class="btn btn-primary">Ticket(s) ophalen</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" width="250" src="~/img/movies.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Film uitzoeken</h5>
+                <p class="card-text">Kies tussen alle films die vandaag in de bioscoop draaien</p>
+                <a asp-action="Overview" class="btn btn-primary"> Ticket(s) bestellen</a>
+            </div>
+        </div>
+    </div>
+</div>
+

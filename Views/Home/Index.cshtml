@@ -1,0 +1,95 @@
+﻿@model dotnet_core_theater.ViewModels.HomeViewModel
+@{
+    ViewData["Title"] = "HomeIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+      integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+      crossorigin="" />
+<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+        integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+        crossorigin=""></script>
+<style>
+    /* Set the size of the div element that contains the map */
+    #mapid {
+        height: 400px; /* The height is 400 pixels */
+        width: 100%; /* The width is the width of the web page */
+    }
+</style>
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="row">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="item active one">
+                    <div class="carousel-caption">
+                        De nieuwste films
+                    </div>
+                </div>
+                <div class="item two">
+                    <div class="carousel-caption">
+                        Alle grote namen
+                    </div>
+                </div>
+                <div class="item three">
+                    <div class="carousel-caption">
+                        Alle drama
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index","Home")"><i class="fa fa-dashboard"></i>Home</a></li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#tab_1" data-toggle="tab">Vandaag</a></li>
+                    <li><a href="#tab_2" data-toggle="tab">Deze week</a></li>
+                    <li><a href="#tab_3" data-toggle="tab">Verwacht</a></li>
+                    <li><a href="#tab_4" data-toggle="tab">Waar zijn wij?</a></li>
+
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab_1">
+                        <!--MOVIES TODAY-->
+                        @await Html.PartialAsync("~/Views/Partials/MoviesToday.cshtml", Model.Schedules)
+                    </div>
+                    <div class="tab-pane" id="tab_2">
+                        @await Html.PartialAsync("~/Views/Partials/MoviesThisWeek.cshtml", Model.Schedules)
+                    </div>
+                    <div class="tab-pane" id="tab_3">
+                        @await Html.PartialAsync("~/Views/Partials/MoviesUpcoming.cshtml", Model.Movies)
+                    </div>
+                    <div class="tab-pane" id="tab_4">
+                        <div id="mapid"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    var mymap = L.map('mapid').setView([51.585370, 4.790010], 20);
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 25,
+        id: 'mapbox.streets',
+        accessToken: 'pk.eyJ1IjoianVsZXNtYXJjdXMiLCJhIjoiY2p0aXBsZDRtMG5mdDN5bnp5YjdtcTZ5eiJ9.KKRtXLaabWhDyKb0J6zOkA'
+    }).addTo(mymap);
+
+    var marker = L.marker([51.585370, 4.790010]).addTo(mymap);
+</script>
+

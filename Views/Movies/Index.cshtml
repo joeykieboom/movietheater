@@ -1,0 +1,47 @@
+﻿@model MovieModel
+<div class="container">
+    <!--Title and information-->
+    <div class="row">
+        <h1>@Model.Title</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <img width="250" src="@Model.ImgSource" />
+        </div>
+        <div class="col-md-4">
+            <iframe width="480" height="375" src="@Model.TrailerSource"></iframe>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <p>@Model.ReleaseDate</p>
+        </div>
+    </div>
+
+    <div class="bs-stepper" id="stepper">
+        <div class="bs-stepper-header">
+            <!-- your steps here -->
+            <div class="step" data-target="#MovieInformation">
+                <button type="button" class="btn btn-link step-trigger" role="tab" aria-controls="MovieInformation-part" id="MovieInformation-trigger">
+                    <span class="bs-stepper-circle">1</span>
+                    <span class="bs-stepper-label">Information</span>
+                </button>
+            </div>
+            <div class="line"></div>
+            <div class="step" data-target="#MovieTimings">
+                <button type="button" class="btn btn-link step-trigger" role="tab" aria-controls="MovieTimings-part" id="MovieTimings-trigger">
+                    <span class="bs-stepper-circle">2</span>
+                    <span class="bs-stepper-label">Timings</span>
+                </button>
+            </div>
+        </div>
+        <div class="bs-stepper-content">
+            <!-- your steps content here -->
+           
+        </div>
+    </div>
+    <!--TODO: add order ticket & check if available-->
+</div>
+
+
+

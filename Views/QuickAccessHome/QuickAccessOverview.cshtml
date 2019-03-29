@@ -1,0 +1,16 @@
+﻿@using dotnet_core_theater.Models
+@model IList<MovieModel>
+
+@{
+}
+<div class="container">
+    <div class="row" style="margin-left:50px;">
+        @foreach (MovieModel movie in Model)
+        {
+            @await Html.PartialAsync("~/Views/Partials/MovieCard.cshtml", movie)
+        }
+    </div>
+</div>
+
+
+

@@ -1,0 +1,51 @@
+﻿@model ScheduleModel
+
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Stoel selectie</button>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Selecteer stoel(en)</h4>
+            </div>
+            <div class="modal-body">
+                <div class="plane">
+                    <ol class="cabin fuselage">
+                        @{ int index = 1; }
+                        @foreach (KeyValuePair<int, List<Tuple<int, bool>>> row in Model.ViewSeats())
+                        {
+                            <li class="row row--@index">
+                                <ol class="seats" type="A">
+                                    @foreach (Tuple<int, bool> item in row.Value)
+                                    {
+                                        if (item.Item2 == true)
+                                        {
+                                            <li class="seat">
+                                                <input type="checkbox" id="@row.Key-@item.Item1" name="@row.Key-@item.Item1" />
+                                                <label for="@row.Key-@item.Item1">@item.Item1</label>
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            <li class="seat">
+                                                <input disabled type="checkbox" id="@row.Key-@item.Item1" />
+                                                <label for="@row.Key-@item.Item1">Occupied</label>
+                                            </li>
+                                        }
+
+                                    }
+                                </ol>
+                            </li>
+                        }
+                    </ol>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-default">Bestel</button>
+            </div>
+        </div>
+    </div>
+</div>

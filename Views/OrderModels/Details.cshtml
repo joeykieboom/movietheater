@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="margin-top:150px; margin-left:650px">
+    <form asp-action="DetailsTicket" asp-controller="OrderModels">
+        <div class="row">
+            <h2>Ticket ophalen</h2>
+            <h4>Voer ticketcode in</h4>
+            <hr />
+            <input type="text" name="trackingID" />
+            <button class="btn btn-default" type="submit">ophalen</button>
+
+        </div>
+    </form>
+</div>
+
